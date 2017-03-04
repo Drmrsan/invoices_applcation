@@ -1,0 +1,9 @@
+#wrapper	
+	#page-wrapper
+		.container-fluid
+			%h2 Account details
+			.row
+				.col-lg-12
+					.panel
+						=@user.email
+						=link_to "Back to Dashboard", dashboard_path

@@ -1,0 +1,68 @@
+-if user_signed_in?
+	%nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+		.navbar-header
+			%button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+				%span.sr-only Toggle navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			%a.navbar-brand{:href => "/"} InvoiceME
+		%ul.nav.navbar-right.top-nav
+			%li.dropdown
+				%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+					%i.fa.fa-bell
+					Notifications
+					%b.caret
+				%ul.dropdown-menu
+					%li
+						%a{:href => "#"}
+							%i.fa.fa-fw.fa-user
+							Notification #1
+					%li
+						%a{:href => "#"}
+							%i.fa.fa-fw.fa-envelope
+							Notification #2
+					%li
+						%a{:href => "#"}
+							%i.fa.fa-fw.fa-gear
+							Notification #3
+					%li.divider
+					%li
+						%a{:href => "#"}
+							%i.fa.fa-fw.fa-power-off
+							Log Out
+		.collapse.navbar-collapse.navbar-ex1-collapse
+			%ul.nav.navbar-nav.side-nav
+				%li
+					%a{"data-target" => "#demo", "data-toggle" => "collapse", :href => "javascript:;"}
+						%i.fa.fa-user
+						John Smith
+						%i.fa.fa-fw.fa-caret-down
+					%ul#demo.collapse
+						-# %li
+						-# 	=link_to "Profile", user_path(@user) if user_signed_in?
+						%li
+							=link_to "Account", edit_user_registration_path
+						%li.logout
+							=link_to "Logout", destroy_user_session_path, method: :delete
+
+				%li
+					=link_to dashboard_path do
+						%i.fa.fa-fw.fa-dashboard
+						Dashboard
+				%li
+					%a{:href => "#"}
+						%i.fa.fa-fw.fa-bar-chart-o
+						Reports
+				%li
+					=link_to invoices_path do
+						%i.fa.fa-edit
+						Invoices
+				%li
+					%a{:href => "#"}
+						%i.fa.fa-clock-o
+						Track
+				%li
+					%a{:href => "#"}
+						%i.fa.fa-user
+						Clients

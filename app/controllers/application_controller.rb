@@ -5,14 +5,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email,
     																									 :website, :address, :postal_code, :city,
-    																									 :country, :phone, :company_logo ])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:first_name, :last_name, :email
+    																									 :country, :phone, :company_logo, :company_name ])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:first_name, :last_name, :email,
     																									 :website, :address, :postal_code, :city,
-    																									 :country, :phone, :company_logo])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :email
+    																									 :country, :phone, :company_logo, :company_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :email,
     																									 :website, :address, :postal_code, :city,
-    																									 :country, :phone, :company_logo])
+    																									 :country, :phone, :company_logo, :company_name])
   end
 end
