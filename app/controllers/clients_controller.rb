@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-	before_action :set_client, only: [:show]
+	before_action :set_client, only: [:show, :edit, :update, :delete]
   def index
   	@clients = Client.all
   end
@@ -19,6 +19,22 @@ class ClientsController < ApplicationController
   end
 
   def show 	
+  end
+
+  def edit
+  end
+
+  def update
+    if @client.update(client_params)
+      redirect_to client_path(@client), notice: "Client details succesfully updated."
+    else
+      render 'edit', notice: "Something went wrong, please try again later."
+    end
+  end
+
+  def delete
+    @client.destroy
+    redirect_to clients_path, notice: "Client succesfully deleted."
   end
 
   private

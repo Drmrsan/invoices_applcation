@@ -1,13 +1,38 @@
 =simple_form_for @invoice do |f|
-	=f.input :name, class:"form-control"
-	=f.input :description, class:"form-control"
-	=f.input :invoice_number, class:"form-control"
-	%label Select Client by Company name
-	.dropdown.form-group
-		=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {}, {class:"dropdown-toggle btn btn-default form-control"})
-	=f.input :currency, class:"form-control"
-	=f.input :date, as: :string, class:"form-control", id:"invoice_date"
-	=f.input :invoice_due, class:"form-control"
-	=f.input :tax, class:"form-control"
-	=f.input :invoice_note, class:"form-control"
-	=f.button :submit, class:"btn btn-success"
+	.row
+		.col-md-6
+			.form-inline
+				=f.input :name, class:"form-control"
+			=f.input :description, class:"form-control"
+		.col-md-4.col-md-offset-2
+			=current_user.company_logo
+	%hr/
+	.row
+		.col-md-12
+			.form-inline
+				.form-group
+					=f.input :invoice_number, class:"form-control", input_html: {value: "#INV_"}
+					=f.input :currency, class:"form-control"
+	%hr/
+	.row
+		.col-md-6
+			%h4 From:
+			%p=current_user.first_name + " " + current_user.last_name
+			%p=current_user.address
+			%p=current_user.postal_code + " " + current_user.city
+			%p=current_user.country
+			=link_to "Edit business profile", edit_user_registration_path, target:"_blank", class:"btn btn-primary"
+			
+		.col-md-6
+			%h4 To:
+			.dropdown.form-group
+				=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Company"}, {class:"dropdown-toggle btn btn-default form-control"})
+			=f.input :date, as: :string, class:"form-control", id:"invoice_date", placeholder:"Select Date"
+			.dropdown.form-group
+				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
+	%hr/
+	.row
+		.col-md-12
+			=f.input :tax, class:"form-control"
+			=f.input :invoice_note, class:"form-control"
+			=f.button :submit, class:"btn btn-success"

@@ -1,0 +1,47 @@
+#wrapper
+	#page-wrapper
+		.row
+			.col-lg-12
+				.panel.panel-default
+					.panel-heading
+						%h2.clients-heading=@client.company_name
+						=link_to "Delete Client", client_path(@client), method: :delete, data:{confirm:"Are you sure?"}, class:"btn btn-danger"
+						=link_to "Edit Details", edit_client_path(@client), class:"btn btn-primary"
+						=link_to "Back", clients_path, class:"btn btn-default"
+					.panel-body
+						%p
+							.bold
+								Company Name:
+							=@client.company_name
+						%p
+							.bold
+								Client Name:
+							=@client.first_name + " " + @client.last_name
+						%p
+							.bold
+								Email:
+							=@client.email
+						%p
+							.bold
+								Website:
+							=@client.website
+						%p
+							.bold
+								Phone number:
+							=@client.phone
+						%p
+							.bold
+								Address:
+							=@client.address
+						%p
+							.bold
+								Postal Code:
+							=@client.postal_code
+						%p
+							.bold
+								City:
+							=@client.city
+						%p
+							.bold 
+								Country:
+							=@client.country

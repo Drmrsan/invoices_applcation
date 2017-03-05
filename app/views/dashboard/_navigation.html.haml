@@ -37,8 +37,12 @@
 			%ul.nav.navbar-nav.side-nav
 				%li
 					%a{"data-target" => "#demo", "data-toggle" => "collapse", :href => "javascript:;"}
-						=current_user.first_name + " " + current_user.last_name
-						%i.fa.fa-fw.fa-caret-down
+						-if current_user.first_name || current_user.last_name
+							=current_user.first_name + " " + current_user.last_name
+							%i.fa.fa-fw.fa-caret-down
+						-else
+							=current_user.email
+							%i.fa.fa-fw.fa-caret-down
 					%ul#demo.collapse
 						-# %li
 						-# 	=link_to "Profile", user_path(@user) if user_signed_in?

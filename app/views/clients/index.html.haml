@@ -15,6 +15,7 @@
 									%th Client Email
 									%th Website
 									%th Phone number
+									%th Details
 							%tbody
 								-@clients.each do |client|
 									%tr
@@ -23,6 +24,7 @@
 										%td=client.email
 										%td=client.website
 										%td=client.phone
+										%td=link_to "Details", client_path(client), class:"btn btn-primary btn-sm"
 
 :javascript
 	$('.clients').DataTable();

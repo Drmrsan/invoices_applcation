@@ -7,6 +7,8 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = current_user.invoices.build
+    @invoice_due_list = ["Due on Receipt", "After 7 days", "After 15 days",
+                    "After 30 days", "After 45 days", "After 60 days"]
   end
 
   def create

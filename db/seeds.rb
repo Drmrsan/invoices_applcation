@@ -18,7 +18,7 @@
 	client_city = Faker::Address.city
 	client_country = Faker::Address.country
 	client_phone = Faker::PhoneNumber.cell_phone
-
+	@user = User.last.id
 	Client.create!(
 		company_name: client_company_name,
 		first_name: client_first_name,
@@ -30,6 +30,6 @@
 		city: client_city,
 		country: client_country,
 		phone: client_phone,
-		user_id: 5,
+		user_id: @user
 		)
 end
