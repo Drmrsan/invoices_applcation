@@ -1,0 +1,14 @@
+=simple_form_for @client do |f|
+	=f.input :company_name, class:"form-controll"
+	=f.input :first_name, label: "Client First Name", class:"form-controll"
+	=f.input :last_name, label: "Client Last Name", class:"form-controll"
+	=f.input :email, label: "Client Email Address", class:"form-controll"
+	=f.input :website, label: "Client Website", class:"form-controll"
+	=f.input :address, class:"form-controll"
+	.form-inline
+		.form-group
+			=f.input :postal_code, class:"form-controll"
+			=f.input :city, class:"form-controll"
+			=f.input :country, as: :string, class:"form-controll"
+	=f.input :phone, class:"form-controll"
+	=f.button :submit, class:"btn btn-success"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'homepage#index'
   
   get '/dashboard', to: 'dashboard#index'
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :invoices
+  resources :clients
 
 end

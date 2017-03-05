@@ -20,6 +20,9 @@ gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'simple_form'
+gem 'faker'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 
 group :development, :test do

@@ -8,10 +8,7 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 	%body
 		= render 'dashboard/navigation'
-		%div{id:"#{'wrapper' if !@index}"}
-			#page-wrapper
-				.container-fluid
-					.flash-message
-						=render 'layouts/messages'
-					= yield
+		.flash-message
+			=render 'layouts/messages'
+		= yield
 
