@@ -24,7 +24,6 @@ gem 'simple_form'
 gem 'faker'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 
-
 group :development, :test do
   gem 'byebug', platform: :mri
 end

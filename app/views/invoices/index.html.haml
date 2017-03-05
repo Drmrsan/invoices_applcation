@@ -2,6 +2,31 @@
 	#page-wrapper
 		.row
 			.col-lg-12
-				.panel
-					%h2 Invoice section
-					=link_to "Back to Dashboard", dashboard_path
+				.panel.panel-default
+					.panel-heading
+						%h2.clients-heading Invoice section
+						=link_to "New Invoice", new_invoice_path, class:"btn btn-success"
+					.panel-body
+						%table.table.table-striped.invoices.table-hover
+							%thead
+								%tr
+									%th Client Name
+									%th Invoice Name
+									%th Invoice Number
+									%th Currency
+									%th Date
+									%th Invoice Due
+									%th Invoice Note
+							%tbody
+								-@invoices.each do |invoice|
+									%tr
+										%td=invoice.client.company_name
+										%td=invoice.name
+										%td=invoice.invoice_number
+										%td=invoice.currency
+										%td=invoice.date
+										%td=invoice.invoice_due
+										%td=invoice.invoice_note
+
+:javascript
+	$('.invoices').DataTable();

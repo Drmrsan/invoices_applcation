@@ -1,0 +1,13 @@
+=simple_form_for @invoice do |f|
+	=f.input :name, class:"form-control"
+	=f.input :description, class:"form-control"
+	=f.input :invoice_number, class:"form-control"
+	%label Select Client by Company name
+	.dropdown.form-group
+		=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {}, {class:"dropdown-toggle btn btn-default form-control"})
+	=f.input :currency, class:"form-control"
+	=f.input :date, as: :string, class:"form-control", id:"invoice_date"
+	=f.input :invoice_due, class:"form-control"
+	=f.input :tax, class:"form-control"
+	=f.input :invoice_note, class:"form-control"
+	=f.button :submit, class:"btn btn-success"

@@ -11,7 +11,8 @@ class ClientsController < ApplicationController
   def create
   	@client = current_user.clients.build(client_params)
   	if @client.save
-  		redirect_to clients_path, notice: "Client succesfully created."
+      flash[:notice] = "Client succesfully created."
+  		redirect_to clients_path
   	else
   		render 'new', notice:"something went wrong!"
   	end
