@@ -23,6 +23,7 @@ gem "font-awesome-rails"
 gem 'simple_form'
 gem 'faker'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'country_select'
 
 group :development, :test do
   gem 'byebug', platform: :mri

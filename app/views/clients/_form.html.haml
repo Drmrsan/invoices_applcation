@@ -9,7 +9,11 @@
 		.form-group
 			=f.input :postal_code, class:"form-control"
 			=f.input :city, class:"form-control"
-			=f.input :country, as: :string, class:"form-control"
+
+			.dropdown.form-group	
+				%label.control-label Country
+				=f.country_select :country,{}, {class:"dropdown-toggle btn btn-default form-control", labe:"Country"}
+			-# =f.input :country, as: :string, class:"form-control"
 	=f.input :phone, class:"form-control"
 	=f.button :submit, class:"btn btn-success"
 	=link_to "Cancel", clients_path, class:"btn btn-default"

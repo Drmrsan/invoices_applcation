@@ -24,7 +24,7 @@
 										%td=invoice.name
 										%td=invoice.invoice_number
 										%td=invoice.currency
-										%td=invoice.date
+										%td=invoice.date.strftime("%d %B, %Y")
 										%td=invoice.invoice_due
 										%td=invoice.invoice_note
 
