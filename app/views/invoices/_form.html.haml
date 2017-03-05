@@ -30,9 +30,44 @@
 			=f.input :date, as: :string, class:"form-control", id:"invoice_date", placeholder:"Select Date"
 			.dropdown.form-group
 				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
+
 	%hr/
 	.row
 		.col-md-12
-			=f.input :tax, class:"form-control"
+			%table.table
+				%thead
+					%tr
+						%th Item
+						%th Qty
+						%th Rate
+						%th Amount
+				%tbody
+					%tr
+						%td
+							%textarea{:name => "", :cols => "40", :rows => "5", class:"form-control", placeholder:"Item name & description"}
+						%td
+							%input{:type => "text", class:"form-control"}/
+						%td
+							%input{:type => "text", class:"form-control"}/
+						%td
+							%input{:type => "text", class:"form-control"}/
+					%tr
+						%td
+							=link_to "New Item", "#", class:"btn btn-primary btn-sm"
+
+	%hr/
+	.row
+		.col-md-6.col-md-offset-6
+			.subtotal
+				%p Subtotal 
+				%p.subtotal_value 0.00
+				=f.input :tax, class:"form-control"
+				%hr/
+				%p.bold Total
+
+	%hr/
+	.row
+		.col-md-12
 			=f.input :invoice_note, class:"form-control"
 			=f.button :submit, class:"btn btn-success"
+			=link_to "Cancel", invoices_path, class:"btn btn-default"
