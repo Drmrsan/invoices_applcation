@@ -17,6 +17,7 @@
 									%th Date
 									%th Invoice Due
 									%th Invoice Note
+									%th Details
 							%tbody
 								-@invoices.each do |invoice|
 									%tr
@@ -24,9 +25,13 @@
 										%td=invoice.name
 										%td=invoice.invoice_number
 										%td=invoice.currency
-										%td=invoice.date.strftime("%d %B, %Y")
+										%td=invoice.date.strftime("%d %B, %Y") if invoice.date
 										%td=invoice.invoice_due
 										%td=invoice.invoice_note
+										%td=link_to "Details", invoice_path(invoice), class:"btn btn-primary"
 
 :javascript
-	$('.invoices').DataTable();
+	$(document).ready(function(){
+		$('.invoices').DataTable();
+	});
+	

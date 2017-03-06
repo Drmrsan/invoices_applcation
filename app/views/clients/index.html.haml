@@ -27,7 +27,9 @@
 										%td=link_to "Details", client_path(client), class:"btn btn-primary btn-sm"
 
 :javascript
-	$('.clients').DataTable();
+	$(document).ready(function(){
+		$('.clients').DataTable();
+	});
 
 
 

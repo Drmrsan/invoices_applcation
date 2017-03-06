@@ -1,4 +1,5 @@
 =simple_form_for @invoice do |f|
+	=render 'shared/error_messages', obj: @invoice
 	.row
 		.col-md-6
 			.form-inline
@@ -34,26 +35,10 @@
 	%hr/
 	.row
 		.col-md-12
-			%table.table
-				%thead
-					%tr
-						%th Item
-						%th Qty
-						%th Rate
-						%th Amount
-				%tbody
-					%tr
-						%td
-							%textarea{:name => "", :cols => "40", :rows => "5", class:"form-control", placeholder:"Item name & description"}
-						%td
-							%input{:type => "text", class:"form-control"}/
-						%td
-							%input{:type => "text", class:"form-control"}/
-						%td
-							%input{:type => "text", class:"form-control"}/
-					%tr
-						%td
-							=link_to "New Item", "#", class:"btn btn-primary btn-sm"
+			=f.simple_fields_for :items do |item|
+				=render 'item_fields', f: item
+			.links
+				=link_to_add_association 'Add Item', f, :items, class:"btn btn-success"
 
 	%hr/
 	.row

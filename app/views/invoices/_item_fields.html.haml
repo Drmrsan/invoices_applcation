@@ -1,0 +1,7 @@
+.form-inline.form-item
+	.nested-fields
+		=f.input :name, class:"form-control",label: false, placeholder:"Item name & description"
+		=f.input :qty, class:"form-control", label: false, placeholder: "Quantity"
+		=f.input :rate, class:"form-control", label: false, placeholder: "Rate / Price"
+		=f.input :amount, class:"form-control", label: false, placeholder:"Amount"
+		=link_to_remove_association 'X', f, class:"btn btn-default"

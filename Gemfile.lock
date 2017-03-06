@@ -47,6 +47,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    cocoon (1.2.9)
     concurrent-ruby (1.0.5)
     countries (1.2.5)
       currencies (~> 0.4.2)
@@ -73,17 +74,6 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
-    haml-rails (0.9.0)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 4.0.6, < 5.0)
-      html2haml (>= 1.0.1)
-      railties (>= 4.0.1)
-    html2haml (2.1.0)
-      erubis (~> 2.7.0)
-      haml (~> 4.0)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
     i18n (0.8.1)
     i18n_data (0.7.0)
     jbuilder (2.6.3)
@@ -150,8 +140,6 @@ GEM
       ffi (>= 0.5.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    ruby_parser (3.8.4)
-      sexp_processor (~> 4.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -159,7 +147,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sexp_processor (4.7.0)
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -180,9 +167,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.1.3)
@@ -205,11 +189,12 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  cocoon
   country_select
   devise
   faker
   font-awesome-rails
-  haml-rails
+  haml (~> 4.0.5)
   jbuilder (~> 2.5)
   jquery-datatables-rails (~> 3.4.0)
   jquery-rails
@@ -221,7 +206,6 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

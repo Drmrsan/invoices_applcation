@@ -14,16 +14,17 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem 'haml-rails'
+gem 'haml', '~> 4.0.5'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'simple_form'
 gem 'faker'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'country_select'
+gem "cocoon"
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

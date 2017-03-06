@@ -1,0 +1,53 @@
+#wrapper
+	.page-wrapper
+		.panel.panel-default
+			.row
+				.col-md-6
+					%h2=@invoice.name
+					%p=@invoice.description
+				.col-md-4.col-md-offset-2
+					=current_user.company_logo
+			%hr/
+			.row
+				.col-md-12
+					%h3
+						=@invoice.invoice_number
+			%hr/
+			.row
+				.col-md-6
+					%h4 From:
+					%p=current_user.first_name + " " + current_user.last_name
+					%p=current_user.address
+					%p=current_user.postal_code + " " + current_user.city
+					%p=current_user.country
+					
+				.col-md-6
+					%h4 
+						To:
+						%p=@invoice.client.company_name
+						%p=@invoice.date
+
+			%hr/
+			.row
+				.col-md-12
+					-@invoice.items.each do |item|
+						%p=item.name
+						%p=item.qty
+						%p=item.rate
+						%p=item.amount
+
+			%hr/
+			.row
+				.col-md-6.col-md-offset-6
+					.subtotal
+						%p Subtotal
+						%p.subtotal_value 0.00
+						%p=@invoice.tax
+						%hr/
+						%p.bold Total
+
+			%hr/
+			.row
+				.col-md-12
+					%p Invoice note
+					=@invoice.invoice_note
