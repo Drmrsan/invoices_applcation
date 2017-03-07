@@ -28,7 +28,7 @@
 										%td=invoice.date.strftime("%d %B, %Y") if invoice.date
 										%td=invoice.invoice_due
 										%td=invoice.invoice_note
-										%td=link_to "Details", invoice_path(invoice), class:"btn btn-primary"
+										%td=link_to "Details", invoice_path(invoice), class:"btn btn-default btn-sm"
 
 :javascript
 	$(document).ready(function(){

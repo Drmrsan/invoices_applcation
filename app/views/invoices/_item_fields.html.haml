@@ -1,7 +1,12 @@
-.form-inline.form-item
-	.nested-fields
-		=f.input :name, class:"form-control",label: false, placeholder:"Item name & description"
-		=f.input :qty, class:"form-control", label: false, placeholder: "Quantity"
-		=f.input :rate, class:"form-control", label: false, placeholder: "Rate / Price"
-		=f.input :amount, class:"form-control", label: false, placeholder:"Amount"
-		=link_to_remove_association 'X', f, class:"btn btn-default"
+.nested-fields
+	.row
+		.col-md-3.form-item
+			=f.input :name, class:"form-control",label: false, placeholder:"Item name & description"
+		.col-md-2.form-item
+			=f.input :qty, class:"form-control", label: false, placeholder: "Quantity"
+		.col-md-3.form-item
+			=f.input :rate, class:"form-control", label: false, placeholder: "Rate / Price"
+		.col-md-3.form-item
+			=f.input :amount, class:"form-control", label: false, placeholder:"Amount"
+		.col-md-1.text-right
+			=link_to_remove_association 'Remove', f, class:"btn btn-danger"

@@ -67,7 +67,7 @@
 					%a{:href => "#"}
 						%i.fa.fa-clock-o
 						Track
-				%li
+				%li{class:"#{'active' if current_page?(clients_path)}"}
 					=link_to clients_path do
 						%i.fa.fa-user
 						Clients

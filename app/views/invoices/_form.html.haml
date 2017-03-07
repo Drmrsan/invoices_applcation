@@ -2,36 +2,45 @@
 	=render 'shared/error_messages', obj: @invoice
 	.row
 		.col-md-6
-			.form-inline
-				=f.input :name, class:"form-control"
-			=f.input :description, class:"form-control"
+			.form-inline.form-field
+				=f.input :name, class:"form-control", label:false, input_html:{value:"INVOICE"}
+			=f.input :description, class:"form-control", label:false, placeholder:"Add description..."
 		.col-md-4.col-md-offset-2
 			=current_user.company_logo
 	%hr/
 	.row
 		.col-md-12
 			.form-inline
-				.form-group
-					=f.input :invoice_number, class:"form-control", input_html: {value: "#INV_"}
-					=f.input :currency, class:"form-control"
+				=f.input :invoice_number, class:"form-control", label:"Invoice No.", input_html: {value: "#INV_"}
+				=f.input :currency, class:"form-control", placeholder:"Add currency..."
 	%hr/
 	.row
-		.col-md-6
-			%h4 From:
+		.col-md-4
+			%h5 From:
 			%p=current_user.first_name + " " + current_user.last_name
 			%p=current_user.address
 			%p=current_user.postal_code + " " + current_user.city
 			%p=current_user.country
-			=link_to "Edit business profile", edit_user_registration_path, target:"_blank", class:"btn btn-primary"
+			=link_to "Edit business profile", edit_user_registration_path, target:"_blank", class:"edit-bussines-profile"
 			
-		.col-md-6
-			%h4 To:
+		.col-md-4
+			%h5 To:
 			.dropdown.form-group
 				=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Company"}, {class:"dropdown-toggle btn btn-default form-control"})
 			=f.input :date, as: :string, class:"form-control", id:"invoice_date", placeholder:"Select Date"
 			.dropdown.form-group
 				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
 
+	%hr/
+	.row
+		.col-md-3
+			%h5 Item
+		.col-md-3
+			%h5 Qty
+		.col-md-3
+			%h5 Rate
+		.col-md-3
+			%h5 Amount
 	%hr/
 	.row
 		.col-md-12
@@ -44,11 +53,14 @@
 	.row
 		.col-md-6.col-md-offset-6
 			.subtotal
-				%p Subtotal 
-				%p.subtotal_value 0.00
-				=f.input :tax, class:"form-control"
+				%h5 Subtotal
+				.subtotal-value 0.00
 				%hr/
-				%p.bold Total
+			=f.input :tax, class:"form-control"
+		
+			.total.well
+				%h5 Total
+				.total-value 0.00
 
 	%hr/
 	.row
