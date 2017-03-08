@@ -26,7 +26,7 @@
 		.col-md-4
 			%h5 To:
 			.dropdown.form-group
-				=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Company"}, {class:"dropdown-toggle btn btn-default form-control"})
+				=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Client"}, {class:"dropdown-toggle btn btn-default form-control"})
 			=f.input :date, as: :string, class:"form-control", id:"invoice_date", placeholder:"Select Date"
 			.dropdown.form-group
 				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
