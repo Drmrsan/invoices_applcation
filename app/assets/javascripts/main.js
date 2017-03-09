@@ -1,16 +1,5 @@
 $(document).ready(function(){
 
-     // Invoice nested forms calculations
-
-     
-    $("#invoice_item_qty > input").on('keyup', function(){
-        var qty_id = $('#invoice_item_qty > input').attr('id');
-        var qty = $('#' + qty_id).val();
-        console.log(qty);
-    })
-
-
-
 	(function($) {
     "use strict"; // Start of use strict
     // Closes the Responsive Menu on Menu Item Click
@@ -36,5 +25,18 @@ $(document).ready(function(){
       .on('cocoon:before-insert', function(e,task_to_be_added) {
         task_to_be_added.fadeIn('slow');
       });
+
+  // Invoice nested forms calculations
+
+     
+    $("#invoice_item_qty > input").on('keyup', function(){
+
+
+        var qty_id = $('#invoice_item_qty > input').attr('id');
+        
+
+        var qty = $('#' + qty_id).val();
+        console.log(qty);
+    // })
 
 });
