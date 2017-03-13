@@ -1,18 +1,27 @@
-function calcAmount () {
-	var qty_id = $('.invoice_items_qty > input').attr('id');
-	var rate_id = $('.invoice_items_rate_id > input').attr('id');
-	var amount_id = $('.invoice_items_amount_id > input').attr('id');
+// var qtyId = $('.invoice_items_qty > input').attr('id');
+// var rateId = $('.invoice_items_rate > input').attr('id');
+// var amountId = $('.invoice_items_amount > input').attr('id');
 
-	var qty = $('#' + qty_id).val();
-	var rate = $('#' + rate_id).val();
-	// var amount = $('#' + amount_id).val();
+// var qtySelect = $('#' + qtyId);
+// var rateSelect = $('#' + rateId);
+// var amountSelect = $('#' + amountId);
 
-	amount = qty * rate;
+// function calcInvoice(){
 
-	amount = amount.toFixed(2);
-}
+//   $(qtySelect, rateSelect).keyup(function(){
+//       var $qty = parseInt(qtySelect.val());
+//       var $rate = parseInt(rateSelect.val());
+//       var $result = isNaN($qty * $rate);
 
-function bindCalcAmount() {
-	$('.invoice_items_qty > input').attr('id').blur(calcAmount);
-	$('.invoice_items_rate_id > input').attr('id').bind(calcAmount);
-}
+//       if($result){
+//           $(amountSelect).val("");
+//       }else{
+//           $(amountSelect).val($qty * $rate)
+//       }
+  
+//   }).keyup();
+// }
+
+// function calcInvoiceBind(){
+// 	$(qtySelect).blur(calcInvoice);
+// }

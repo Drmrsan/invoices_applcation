@@ -25,14 +25,29 @@ $(document).ready(function(){
     $('#new_invoice')
       .on('cocoon:before-insert', function(e,task_to_be_added) {
         task_to_be_added.fadeIn('slow');
-      });
+      }).on('cocoon:after-insert', function(){
 
-  // Invoice nested forms calculations
+        var qtyId = $('.invoice_items_qty > input').attr('id');
+        var rateId = $('.invoice_items_rate > input').attr('id');
+        var amountId = $('.invoice_items_amount > input').attr('id');
 
-    var qty_id = $('.invoice_items_qty > input').attr('id');
+        var qtySelect = $('#' + qtyId);
+        var rateSelect = $('#' + rateId);
+        var amountSelect = $('#' + amountId);
+
+
+        $(qtySelect, rateSelect).keyup(function(){
+            var $qty = parseInt(qtySelect.val());
+            var $rate = parseInt(rateSelect.val());
+            var $result = isNaN($qty * $rate);
+
+            if($result){
+                $(amountSelect).val("");
+            }else{
+                $(amountSelect).val($qty * $rate)
+            }
         
-    $(".add_fields").on('click', function(){
-        alert("Fufufufu");
-    });
+        }).keyup();
+      });
 
 });
