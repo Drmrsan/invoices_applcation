@@ -8,6 +8,9 @@
 					.panel-body
 						=render 'invoices/form'
 :javascript
-	$('#invoice_date').datepicker({
-		format: "dd MM, yyyy"
-	});
+	$(document).ready(function(){
+		$('#invoice_date').datepicker({
+			format: "dd MM, yyyy"
+		});
+	})
+	

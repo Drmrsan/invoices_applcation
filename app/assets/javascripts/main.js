@@ -21,6 +21,7 @@ $(document).ready(function(){
         })
     }, 5000);
 
+
     $('#new_invoice')
       .on('cocoon:before-insert', function(e,task_to_be_added) {
         task_to_be_added.fadeIn('slow');
@@ -28,15 +29,10 @@ $(document).ready(function(){
 
   // Invoice nested forms calculations
 
-     
-    $("#invoice_item_qty > input").on('keyup', function(){
-
-
-        var qty_id = $('#invoice_item_qty > input').attr('id');
+    var qty_id = $('.invoice_items_qty > input').attr('id');
         
-
-        var qty = $('#' + qty_id).val();
-        console.log(qty);
-    // })
+    $(".add_fields").on('click', function(){
+        alert("Fufufufu");
+    });
 
 });
