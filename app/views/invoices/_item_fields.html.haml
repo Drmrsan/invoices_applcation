@@ -4,9 +4,9 @@
 			.col-md-3.form-item
 				=f.input :name, class:"form-control",label: false, placeholder:"Item name & description"
 			.col-md-2.form-item
-				=f.input :qty, class:"form-control", id:"invoice-item-qty", label: false, placeholder: "Quantity"
+				=f.input :rate, :input_html => {value: number_with_precision(f.object.rate, precision: 2)}, class:"form-control",label: false, placeholder: "Rate / Price"
 			.col-md-3.form-item
-				=f.input :rate, class:"form-control", label: false, placeholder: "Rate / Price"
+				=f.input :qty, class:"form-control", label: false, placeholder: "Quantity"
 			.col-md-3.form-item
 				=f.input :amount, class:"form-control", label: false, placeholder:"Amount", disabled: true
 			.col-md-1.text-right

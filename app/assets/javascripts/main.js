@@ -21,33 +21,14 @@ $(document).ready(function(){
         })
     }, 5000);
 
+    // Nested forms
 
     $('#new_invoice')
-      .on('cocoon:before-insert', function(e,task_to_be_added) {
-        task_to_be_added.fadeIn('slow');
-      }).on('cocoon:after-insert', function(){
-
-        var qtyId = $('.invoice_items_qty > input').attr('id');
-        var rateId = $('.invoice_items_rate > input').attr('id');
-        var amountId = $('.invoice_items_amount > input').attr('id');
-
-        var qtySelect = $('#' + qtyId);
-        var rateSelect = $('#' + rateId);
-        var amountSelect = $('#' + amountId);
-
-
-        $(qtySelect, rateSelect).keyup(function(){
-            var $qty = parseInt(qtySelect.val());
-            var $rate = parseInt(rateSelect.val());
-            var $result = isNaN($qty * $rate);
-
-            if($result){
-                $(amountSelect).val("");
-            }else{
-                $(amountSelect).val($qty * $rate)
-            }
-        
-        }).keyup();
-      });
+        .on('cocoon:before-insert', function(e,new_item) {
+            new_item.fadeIn('slow');
+        })
+        .on('cocoon:after-insert', function(e, added_item){
+            calcAmount(added_item);
+        });
 
 });
