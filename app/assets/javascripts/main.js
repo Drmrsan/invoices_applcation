@@ -28,7 +28,9 @@ $(document).ready(function(){
             new_item.fadeIn('slow');
         })
         .on('cocoon:after-insert', function(e, added_item){
-            calcAmount(added_item);
+            $(".nested-fields").each(function(e,added_item){
+                calcAmount(added_item);
+            })
         });
 
 });
