@@ -1,14 +1,13 @@
 .nested-fields
 	.row
-		.container-fluid.row-hover
-			.col-md-3.form-item
-				=f.input :name, class:"form-control",label: false, placeholder:"Item name & description"
-			.col-md-2.form-item
-				=f.input :rate, :input_html => {value: number_with_precision(f.object.rate, precision: 2)}, class:"form-control",label: false, placeholder: "Rate / Price"
-			.col-md-3.form-item
-				=f.input :qty, class:"form-control", label: false, placeholder: "Quantity"
-			.col-md-3.form-item
-				=f.input :amount, class:"form-control", label: false, placeholder:"Amount", disabled: true
-			.col-md-1.text-right
-				=link_to_remove_association 'Remove', f, class:"btn btn-danger"
-	%hr/
+		.col-md-3.form-item
+			=f.input_field :name, class:"form-control name",label: false, placeholder:"Item name & description"
+		.col-md-2.form-item
+			=f.input_field :rate, class:"form-control rate",label: false, placeholder: "Rate / Price"
+		.col-md-3.form-item
+			=f.input_field :qty, class:"form-control qty", label: false, placeholder: "Quantity"
+		.col-md-3.form-item
+			=f.input_field :amount, class:"form-control amount", label: false, placeholder:"Amount", disabled: true
+		.col-md-1.text-right
+			=link_to_remove_association 'Remove', f, class:"btn btn-danger"
+%hr/

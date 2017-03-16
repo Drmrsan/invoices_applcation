@@ -1,26 +1,40 @@
 function calcAmount(){
-	// Grab input ID's
-  var qtyId = $('.invoice_items_qty > input').attr('id');
-  var rateId = $('.invoice_items_rate > input').attr('id');
-  var amountId = $('.invoice_items_amount > input').attr('id');
-  // Create input ID's variables
-  var qtySelect = $('#' + qtyId);
-  var rateSelect = $('#' + rateId);
-  var amountSelect = $('#' + amountId);
-
-	$(qtySelect, rateSelect).keyup(function(){
   
-    var qty = parseInt(qtySelect.val());
-    var rate = parseInt(rateSelect.val());
-    var result = isNaN(qty * rate);
+  $('.nested-fields').each(function(){
+    amount = $('.rate').val() * $('.qty').val();
 
-		// if it's not a number put empty string, else calculate result
+    var result = isNaN(amount);
+
     if(result){
-      $(amountSelect).val("");
+        $('.amount').val("");
     }
     else{
-      $(amountSelect).val(qty * rate);
+      $('.amount').val(amount);
     }
-	}).keyup();
+  });
 }
+  
+  
+
+function bindCalcAmount(){
+  $('.rate').blur(calcAmount);
+  $('.qty').blur(calcAmount);
+}
+
+
+  // $('.rate, .qty').keyup(function(){
+
+  //   var rate = parseInt($('.rate').val());
+  //   var qty = parseInt($('.qty').val());
+  //   var result = isNaN(qty * rate);
+
+  //       // if it's not a number put empty string, else calculate result
+  //   if(result){
+  //     $('.amount').val("");
+  //   }
+  //   else{
+  //     $('.amount').val(qty * rate);
+  //   }
+  // }).keyup();
+  
 
