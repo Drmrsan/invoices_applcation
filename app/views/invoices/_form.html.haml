@@ -33,7 +33,7 @@
 				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
 
 	%hr/
-	.row
+	.row.items-header
 		.col-md-3
 			%h5 Item
 		.col-md-3
@@ -43,12 +43,11 @@
 		.col-md-3
 			%h5 Amount
 	%hr/
-	.row
-		.col-md-12
-			=f.simple_fields_for :items do |item|
-				=render 'item_fields', f: item
-			.links
-				=link_to_add_association 'Add Item', f, :items, class:"btn btn-success"
+	.row.col-md-12
+		=f.simple_fields_for :items, input_html:{id:"invoice-items"} do |item|
+			=render 'item_fields', f: item
+		.links
+			=link_to_add_association 'Add Item', f, :items, class:"btn btn-success"
 
 	%hr/
 	.row

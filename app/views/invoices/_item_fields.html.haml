@@ -1,13 +1,11 @@
-.nested-fields
-	.row
-		.col-md-3.form-item
-			=f.input_field :name, class:"form-control name",label: false, placeholder:"Item name & description"
-		.col-md-2.form-item
-			=f.input_field :rate, class:"form-control rate",label: false, placeholder: "Rate / Price"
-		.col-md-3.form-item
-			=f.input_field :qty, class:"form-control qty", label: false, placeholder: "Quantity"
-		.col-md-3.form-item
-			=f.input_field :amount, class:"form-control amount", label: false, placeholder:"Amount", disabled: true
-		.col-md-1.text-right
-			=link_to_remove_association 'Remove', f, class:"btn btn-danger"
-%hr/
+.row.nested-fields
+	.col-md-3.form-item
+		=f.input_field :name, class:"form-control name",label: false, placeholder:"Item name & description"
+	.col-md-2.form-item
+		=f.input_field :rate, class:"form-control rate",label: false, placeholder: "Rate / Price"
+	.col-md-3.form-item
+		=f.input_field :qty, class:"form-control qty", label: false, placeholder: "Quantity"
+	.col-md-3.form-item
+		=f.input_field :amount, class:"form-control amount", label: false, placeholder:"Amount", disabled: true
+	.col-md-1.text-right
+		=link_to_remove_association 'Remove', f, class:"btn btn-danger"
