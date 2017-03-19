@@ -31,5 +31,8 @@ $(document).ready(function(){
             bindCalcAmount();
         });
         bindCalcAmount();
-    
+    $('#new_invoice')
+        .on('coccon:after-remove', function(e, removed_item){
+            calcSubTotal();
+        });
 });

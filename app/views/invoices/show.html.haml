@@ -41,10 +41,10 @@
 				.col-md-6.col-md-offset-6
 					.subtotal
 						%p Subtotal
-						%p.subtotal_value 0.00
+						%p.subtotal_value=@invoice.subtotal
 						%p=@invoice.tax
 						%hr/
-						%p.bold Total
+						%p.bold=@invoice.total
 
 			%hr/
 			.row

@@ -52,15 +52,16 @@
 	%hr/
 	.row
 		.col-md-6.col-md-offset-6
-			.subtotal
+			.subtotal-cost
 				%h5 Subtotal
-				.subtotal-value 0.00
+				=f.input_field :subtotal, class:"form-control subtotal", label:false, placeholder:"Subtotal" 
+				
 				%hr/
 			=f.input :tax, class:"form-control"
 		
-			.total.well
+			.total-cost
 				%h5 Total
-				.total-value 0.00
+				=f.input_field :total, class:"form-control total", label:false, placeholder:"Total"
 
 	%hr/
 	.row
