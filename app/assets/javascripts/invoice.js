@@ -1,18 +1,17 @@
 function calcAmount(){
   
-  // var row = $('.form-item').parent();
-  // var row = $('.nested-fields');
-  var rate = $('.rate').val();
-  var qty = $('.qty').val();
+  var row = $(this).closest('.nested-fields');
+  var rate = row.find('.rate').val();
+  var qty = row.find('.qty').val();
 
   amount = rate * qty;
 
   var result = isNaN(amount);
     if(result){
-        $('.amount').val("");
+        row.find('.amount').val("");
     }
     else{
-      $('.amount').val(amount);
+      row.find('.amount').val(amount);
     }
 }
   
