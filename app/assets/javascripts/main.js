@@ -29,10 +29,11 @@ $(document).ready(function(){
         })
         .on('cocoon:after-insert', function(e, added_item){
             bindCalcAmount();
-        });
-        bindCalcAmount();
-    $('#new_invoice')
-        .on('coccon:after-remove', function(e, removed_item){
+        })
+        .on('cocoon:after-remove', function(e, removed_item){
             calcSubTotal();
         });
+        bindCalcAmount();
+
+    $('#invoice_tax').blur(calcTotal);
 });

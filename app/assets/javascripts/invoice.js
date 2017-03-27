@@ -1,14 +1,27 @@
-function calcSubTotal (){
+function calcSubTotal() {
   var subtotal = 0;
   $('.amount').each(function(i){
     var amount = $(this).val();
-    console.log(amount);
     if (!isNaN(amount)){
       subtotal += Number(amount);
     }  
   });
 
   $('#invoice_subtotal').val(subtotal);
+
+  calcTotal();
+}
+
+function calcTotal() {
+  var subtotal = $('.subtotal').val();
+  var tax = $('#invoice_tax').val();
+
+  percentage = Number((tax / 100) * subtotal);
+
+  var total = Number(subtotal) + percentage;
+
+  total = total.toFixed(2);
+  $('.total').val(total);
 }
 
 
