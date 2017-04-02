@@ -12,7 +12,10 @@
 		.col-md-12
 			.form-inline
 				=f.input :invoice_number, class:"form-control", label:"Invoice No.", input_html: {value: "#INV_"}
-				=f.input :currency, class:"form-control", placeholder:"Add currency..."
+				=f.label :currency
+				.dropdown.form-group
+					=f.select(:currency, @currencies.xpath('//Ccy').map{|name| [name.text]}, {prompt:"Select currency"}, class:"dropdown-toggle btn btn-default form-control")
+				
 	%hr/
 	.row
 		.col-md-4

@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  require 'nokogiri'
+  require 'open-uri'
 	before_action :set_invoice, only: [:show]
   before_action :invoice_due_list, only: [:new, :create]
 	def index
@@ -8,6 +10,10 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = current_user.invoices.build
+
+    xml_url = "https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+    @currencies = Nokogiri::XML(open(xml_url))
+
   end
 
   def create
@@ -21,7 +27,8 @@ class InvoicesController < ApplicationController
   	end
   end
 
-  def show 	
+
+  def show	
   end
 
   private
