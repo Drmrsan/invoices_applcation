@@ -1,4 +1,5 @@
 =simple_form_for @invoice do |f|
+	
 	=render 'shared/error_messages', obj: @invoice
 	.row
 		.col-md-6
@@ -12,9 +13,7 @@
 		.col-md-12
 			.form-inline
 				=f.input :invoice_number, class:"form-control", label:"Invoice No.", input_html: {value: "#INV_"}
-				=f.label :currency
-				.dropdown.form-group
-					=f.select(:currency, @currencies.xpath('//Ccy').map{|name| [name.text]}, {prompt:"Select currency"}, class:"dropdown-toggle btn btn-default form-control")
+				=f.select(:currency, @currencies.xpath('//Ccy').map{|name| [name.text]}, {prompt:"Currency"}, {class:""})
 				
 	%hr/
 	.row
@@ -29,8 +28,7 @@
 			
 		.col-md-4
 			%h5 To:
-			.dropdown.form-group
-				=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Client"}, {class:"dropdown-toggle btn btn-default form-control"})
+			=collection_select(:invoice, :client_id, Client.all, :id, :company_name, {prompt:"Select Client"})
 			=f.input :date, as: :string, class:"form-control", id:"invoice_date", placeholder:"Select Date"
 			.dropdown.form-group
 				=f.select(:invoice_due, @invoice_due_list.map{ |value| [value, value] },{prompt:"Payment method"}, class:"dropdown-toggle btn btn-default form-control")
@@ -57,14 +55,19 @@
 		.col-md-6.col-md-offset-6
 			.subtotal-cost
 				%h5 Subtotal
-				=f.input_field :subtotal, class:"form-control subtotal", label:false, placeholder:"Subtotal" 
+				.input-group
+					%span.input-group-addon
+					=f.input_field :subtotal, class:"form-control subtotal", label:false, placeholder:"Subtotal", disabled: true
+				
 				
 				%hr/
-			=f.input :tax, class:"form-control"
+			=f.input :tax, class:"form-control", label: "TAX (%)"
 		
 			.total-cost
 				%h5 Total
-				=f.input_field :total, class:"form-control total", label:false, placeholder:"Total"
+				.input-group
+					%span.input-group-addon
+					=f.input_field :total, class:"form-control total", label:false, placeholder:"Total", disabled: true
 
 	%hr/
 	.row

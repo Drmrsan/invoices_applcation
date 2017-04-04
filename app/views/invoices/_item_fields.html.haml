@@ -6,6 +6,8 @@
 	.col-md-3.form-item
 		=f.input_field :qty, class:"form-control qty text-right", label: false, placeholder: "Quantity"
 	.col-md-3.form-item
-		=f.input_field :amount, class:"form-control amount text-right", label: false, placeholder:"Amount"
+		.input-group
+			%span.input-group-addon
+			=f.input_field :amount, class:"form-control amount text-right", label: false, placeholder:"Amount"
 	.col-md-1.text-right
 		=link_to_remove_association 'Remove', f, class:"btn btn-danger"

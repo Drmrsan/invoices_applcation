@@ -4,10 +4,11 @@ function calcSubTotal() {
     var amount = $(this).val();
     if (!isNaN(amount)){
       subtotal += Number(amount);
-    }  
+    }
+
   });
 
-  $('#invoice_subtotal').val(subtotal);
+  $('#invoice_subtotal').val(subtotal.toFixed(2));
 
   calcTotal();
 }
