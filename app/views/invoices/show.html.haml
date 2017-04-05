@@ -1,54 +1,65 @@
 #wrapper
-	.page-wrapper
-		.panel.panel-default
-			.row
-				.col-md-6
-					%h2=@invoice.name
-					%p=@invoice.description
-				.col-md-4.col-md-offset-2
-					=current_user.company_logo
-			%hr/
-			.row
-				.col-md-12
-					%h3
-						=@invoice.invoice_number
-			%hr/
-			.row
-				.col-md-6
-					%h4 From:
-					%p=current_user.first_name + " " + current_user.last_name
-					%p=current_user.address
-					%p=current_user.postal_code + " " + current_user.city
-					%p=current_user.country
-					
-				.col-md-6
-					%h4 
-						To:
+	#page-wrapper
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					.row
+						.col-md-6
+							%h2.clients-heading=current_user.company_name
+							%p=current_user.address
+							%p=current_user.postal_code + " " + current_user.city
+							%p=current_user.country
+						
+						.col-md-6.text-right
+							%h2 Invoice
+							%p.invoice-date=@invoice.date.strftime("%d %B, %Y")
+
+				.panel-body		
+					.col-md-6
+						%h4 To:
+						%p=@invoice.client.first_name + " " + @invoice.client.last_name
 						%p=@invoice.client.company_name
-						%p=@invoice.date
+						%p=@invoice.client.address
+						%p=@invoice.client.city + ", " + @invoice.client.postal_code
+						%p=@invoice.client.phone
+					.col-md-6
+						%h4=@invoice.invoice_number
+						%p Payment due: #{@invoice.invoice_due}
+					
+					.row
+						.col-md-12
+							%table.table.table-bordered.table-hover.table-striped
+								%thead
+									%tr
+										%th Description
+										%th Price
+										%th Qty
+										%th Amount
+								%tbody
+									-@invoice.items.each do |item|
+										%tr
+											%td=item.name if item.name
+											%td=item.rate if item.rate
+											%td=item.qty if item.qty
+											%td=item.amount if item.amount
 
-			%hr/
-			.row
-				.col-md-12
-					-@invoice.items.each do |item|
-						%p=item.name
-						%p=item.qty
-						%p=item.rate
-						%p=item.amount
+							.col-md-4.col-md-offset-8.table-summary
+								%table.table.table-bordered.table-hover
+									%tbody
+										%tr
+											%th.text-center Subtotal
+											%td.text-right #{@invoice.subtotal} #{@invoice.currency}
+										%tr
+											%th.text-center Tax
+											%td.text-right #{@invoice.tax} #{"%"}
+										%tr
+											%th.text-center Total
+											%td.text-right #{@invoice.total} #{@invoice.currency}
+					=link_to "Print", "#", onclick:"printPage()", class:"btn btn-success"
+					&nbsp
+					=link_to "Save as PDF", "#", class:"btn btn-primary"
 
-			%hr/
-			.row
-				.col-md-6.col-md-offset-6
-					.subtotal
-						%p Subtotal
-						%p.subtotal_value=@invoice.subtotal
-						%p=@invoice.tax
-						%hr/
-						%p.bold=@invoice.total
-
-			%hr/
-			.row
-				.col-md-12
-					%p Invoice note
-					=@invoice.invoice_note
-				
+:javascript
+	function printPage(){
+		window.print();
+	}

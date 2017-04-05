@@ -4,7 +4,7 @@
 	.row
 		.col-md-6
 			.form-inline.form-field
-				=f.input :name, class:"form-control", label:false, input_html:{value:"INVOICE"}
+				=f.input :name, class:"form-control", label:false, input_html:{value:"INVOICE NAME"}
 			=f.input :description, class:"form-control", label:false, placeholder:"Add description..."
 		.col-md-4.col-md-offset-2
 			=current_user.company_logo
@@ -13,7 +13,7 @@
 		.col-md-12
 			.form-inline
 				=f.input :invoice_number, class:"form-control", label:"Invoice No.", input_html: {value: "#INV_"}
-				=f.select(:currency, @currencies.xpath('//Ccy').map{|name| [name.text]}, {prompt:"Currency"}, {class:""})
+				=f.select(:currency, @currencies.xpath('//Ccy').map{|name| [name.text]}, {prompt:"Currency"}, {class:"currency-select"})
 				
 	%hr/
 	.row
@@ -57,7 +57,7 @@
 				%h5 Subtotal
 				.input-group
 					%span.input-group-addon
-					=f.input_field :subtotal, class:"form-control subtotal", label:false, placeholder:"Subtotal", disabled: true
+					=f.input_field :subtotal, class:"form-control subtotal", label:false, placeholder:"Subtotal"
 				
 				
 				%hr/
@@ -67,8 +67,7 @@
 				%h5 Total
 				.input-group
 					%span.input-group-addon
-					=f.input_field :total, class:"form-control total", label:false, placeholder:"Total", disabled: true
-
+					=f.input_field :total, class:"form-control total", label:false, placeholder:"Total"
 	%hr/
 	.row
 		.col-md-12

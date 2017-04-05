@@ -1,12 +1,11 @@
 #wrapper
 	#page-wrapper
-		.row
-			.col-lg-12
-				.panel.panel-default
-					.panel-heading
-						%h4.text-center New Invoice
-					.panel-body
-						=render 'invoices/form'
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					%h4.text-center New Invoice
+				.panel-body
+					=render 'invoices/form'
 :javascript
 	$(document).ready(function(){
 		$('#invoice_date').datepicker({

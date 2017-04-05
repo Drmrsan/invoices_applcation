@@ -1,34 +1,33 @@
 #wrapper
 	#page-wrapper
-		.row
-			.col-lg-12
-				.panel.panel-default
-					.panel-heading
-						%h2.clients-heading Invoice section
-						=link_to "New Invoice", new_invoice_path, class:"btn btn-success"
-					.panel-body
-						%table.table.table-striped.invoices.table-hover
-							%thead
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					%h2.clients-heading Invoice section
+					=link_to "New Invoice", new_invoice_path, class:"btn btn-success"
+				.panel-body
+					%table.table.table-striped.invoices.table-hover
+						%thead
+							%tr
+								%th Client Name
+								%th Invoice Name
+								%th Invoice Number
+								%th Currency
+								%th Date
+								%th Invoice Due
+								%th Invoice Note
+								%th Details
+						%tbody
+							-@invoices.each do |invoice|
 								%tr
-									%th Client Name
-									%th Invoice Name
-									%th Invoice Number
-									%th Currency
-									%th Date
-									%th Invoice Due
-									%th Invoice Note
-									%th Details
-							%tbody
-								-@invoices.each do |invoice|
-									%tr
-										%td=invoice.client.company_name
-										%td=invoice.name
-										%td=invoice.invoice_number
-										%td=invoice.currency
-										%td=invoice.date.strftime("%d %B, %Y") if invoice.date
-										%td=invoice.invoice_due
-										%td=invoice.invoice_note
-										%td=link_to "Details", invoice_path(invoice), class:"btn btn-default btn-sm"
+									%td=invoice.client.company_name
+									%td=invoice.name
+									%td=invoice.invoice_number
+									%td=invoice.currency
+									%td=invoice.date.strftime("%d %B, %Y") if invoice.date
+									%td=invoice.invoice_due
+									%td=invoice.invoice_note
+									%td=link_to "Details", invoice_path(invoice), class:"btn btn-default btn-sm"
 
 :javascript
 	$(document).ready(function(){
