@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
   require 'nokogiri'
   require 'open-uri'
-	before_action :set_invoice, only: [:show]
+	before_action :set_invoice, only: [:show, :destroy]
   before_action :invoice_due_list, only: [:new, :create]
 	def index
 		@user = current_user.id
@@ -28,7 +28,16 @@ class InvoicesController < ApplicationController
   end
 
 
-  def show	
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf { render template: "invoices/invoice", pdf: "Invoice" }
+    end
+  end
+
+  def destroy
+    @invoice.destroy
+    redirect_to invoices_path
   end
 
   private

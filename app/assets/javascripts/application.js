@@ -18,5 +18,7 @@
 //= require datepicker
 //= require selectize
 //= require cocoon
+//= require highcharts
+//= require chartkick
 //= require_tree .
 

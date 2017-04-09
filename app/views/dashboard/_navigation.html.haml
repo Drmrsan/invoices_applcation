@@ -55,18 +55,10 @@
 					=link_to dashboard_path do
 						%i.fa.fa-fw.fa-dashboard
 						Dashboard
-				%li
-					%a{:href => "#"}
-						%i.fa.fa-fw.fa-bar-chart-o
-						Reports
 				%li{class:"#{'active' if current_page?(invoices_path)}"}
 					=link_to invoices_path do
 						%i.fa.fa-edit
 						Invoices
-				%li
-					%a{:href => "#"}
-						%i.fa.fa-clock-o
-						Track
 				%li{class:"#{'active' if current_page?(clients_path)}"}
 					=link_to clients_path do
 						%i.fa.fa-user

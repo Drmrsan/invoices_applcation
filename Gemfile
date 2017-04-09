@@ -24,6 +24,10 @@ gem 'faker'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'country_select'
 gem "cocoon"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'chartkick'
+gem 'groupdate'
 
 
 group :development, :test do

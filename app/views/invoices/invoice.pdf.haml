@@ -12,7 +12,7 @@
 						
 						.col-md-6.text-right
 							%h2 Invoice
-							%p.invoice-date=@invoice.created_at.strftime("%d %B, %Y")
+							%p.invoice-date=@invoice.date.strftime("%d %B, %Y")
 
 				.panel-body		
 					.col-md-6
@@ -55,13 +55,3 @@
 										%tr
 											%th.text-center Total
 											%td.text-right #{@invoice.total} #{@invoice.currency}
-					=link_to "Print", "#", onclick:"printPage()", class:"btn btn-success"
-					&nbsp
-					=link_to "Save as PDF", invoice_path(format: :pdf), class:"btn btn-primary"
-					&nbsp
-					=link_to "Delete", invoice_path, method: :delete, data:{confirm:"Are you sure?"}, class:"btn btn-danger"
-
-:javascript
-	function printPage(){
-		window.print();
-	}
