@@ -11,6 +11,12 @@
 body {
   overflow-x: hidden;
 }
+.homepage{
+  background: url(bg-header.jpg) no-repeat center bottom;
+  background-color: rgb(50,55,71);
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 p.small {
   font-size: 16px;
@@ -41,13 +47,14 @@ hr.star-primary {
   max-width: 250px;
   margin: 25px auto 30px;
 }
-hr.star-light:after,
-hr.star-primary:after {
+hr.star-light:after
+// hr.star-primary:after 
+  {
   content: "\f005";
   font-family: FontAwesome;
   display: inline-block;
   position: relative;
-  top: -0.8em;
+  top: 1em;
   font-size: 2em;
   padding: 0 0.25em;
 }
@@ -61,19 +68,21 @@ hr.star-light:after {
 hr.star-primary {
   border-color: white;
 }
-hr.star-primary:after {
-  background-color: #363B4D;
-  color: white;
-}
+// hr.star-primary:after {
+//   background-color: rgba(35, 39, 50, 0.95);
+//   color: white;
+//   border-radius: 50%;
+//   border: 5px solid white;
+// }
 .img-centered {
   margin: 0 auto;
 }
 header {
   text-align: center;
   color: white;
-  background: url(bg-header.jpg) no-repeat center bottom;
-  background-color: rgb(50,55,71);
-  background-size: cover;
+  // background: url(bg-header.jpg) no-repeat center bottom;
+  // background-color: rgb(50,55,71);
+  // background-size: cover;
   position: relative
 }
 
@@ -98,15 +107,18 @@ header .intro-text .skills {
 @media (min-width: 768px) {
   header .container {
     padding-top: 300px;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
+  }
+  header .fa.fa-clock-o {
+    text-shadow: 1px 0px 8px rgb(122, 126, 130);
   }
   header .intro-text .name {
     font-size: 4.75em;
-    text-shadow: 1px 0px 8px rgba(35, 39, 50, 0.7);
+    text-shadow: 1px 0px 8px rgb(122, 126, 130);
   }
   header .intro-text .skills {
     font-size: 1.75em;
-    text-shadow: 1px 0px 8px rgba(35, 39, 50, 0.7);
+    text-shadow: 1px 0px 8px rgb(122, 126, 130);
   }
 }
 .navbar-custom {
@@ -196,7 +208,7 @@ section.success {
   color: white;
   // border-top: 1px solid white;
   border-bottom: 1px solid white;
-  background: #363B4D;
+  background: rgba(35, 39, 50, 0.95);
 }
 @media (max-width: 767px) {
   section {
@@ -324,11 +336,12 @@ footer .footer-below {
 }
 .btn-outline {
   color: white;
-  font-size: 20px;
   border: solid 2px white;
   background: transparent;
   transition: all 0.3s ease-in-out;
-  margin-top: 15px;
+  font-weight: 700;
+  margin-left: 10px;
+  font-size: 14px;
 }
 .btn-outline:hover,
 .btn-outline:focus,
@@ -384,6 +397,7 @@ fieldset[disabled] .btn-primary.active {
   color: white;
   background-color: #18BC9C;
   border-color: #18BC9C;
+  border: solid 2px #18BC9C;
   font-weight: 700;
   transition: all 0.3s ease-in-out;
 }

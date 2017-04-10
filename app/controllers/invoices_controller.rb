@@ -10,14 +10,14 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = current_user.invoices.build
-
     xml_url = "https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
     @currencies = Nokogiri::XML(open(xml_url))
-
   end
 
   def create
   	@invoice = current_user.invoices.build(invoice_params)
+    xml_url = "https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+    @currencies = Nokogiri::XML(open(xml_url))
     
   	if @invoice.save
       flash[:notice] = "Invoice succesfully created."

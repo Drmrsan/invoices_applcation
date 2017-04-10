@@ -2,12 +2,12 @@
 	#page-wrapper
 		.col-lg-12
 			-if current_user.first_name.blank?
-				=link_to "Add your details", edit_user_registration_path, class:"btn btn-primary"
+				=link_to "Add your details", edit_user_registration_path, class:"btn btn-primary add-details"
 			.panel.panel-default
 				.panel-heading
 					%h2.clients-heading Invoices
 				.panel-body
-					=area_chart @clients.map{|client| {name: client.company_name, data: client.invoices.group_by_day_of_week(:created_at, format:"%A", week_start: :mon).maximum(:total)}}, legend: false
+					=column_chart @clients.map{|client| {name: client.company_name, data: client.invoices.group_by_month(:created_at).maximum(:total)}}, legend: false
 		
 			.panel.panel-default
 				.panel-heading
@@ -15,7 +15,7 @@
 				.panel-body
 					-@clients.each do |client|
 						-if client.invoices.count > 0
-							.col-md-3
+							.col-md-2
 								%h5 #{client.company_name} for #{Date.today.strftime("%B, %Y")}
 								=pie_chart client.invoices.group_by_day(:created_at).sum(:total), donut: true
 
